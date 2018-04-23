@@ -2,7 +2,7 @@ import apiCalls
 import json
 
 def mentionsNamesToJson(mentionNames):
-    file= open("mentions.json","w")
+    file= open("mentions.json","w+")
     json.dump(mentionNames, file)
 
 def jsonToMentionNames():
