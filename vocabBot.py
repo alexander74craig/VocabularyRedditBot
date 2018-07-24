@@ -4,31 +4,31 @@ import json
 
 class vocabBot:
 
+    #initializes praw instance
     def __init__(self):
         self.redditInstance= praw.Reddit('vocab' , user_agent='Python/PC:vocabularyredditbot:v0.1')
 
-    def replyToMention(self, mention):
-        print("replyToMentions")
-        content=mention.body
-        words=content.split()
-        reply= self.makeMessage(words)
-        mention.reply(reply)
-
+    #checks for unread mentions and proccesses new mentions
     def proccessMentions(self):
-        print("processMentions")
         for mention in self.redditInstance.inbox.mentions(limit=None):
             if mention.new:
                 self.replyToMention(mention)
                 mention.mark_read()
 
+    #reads in current message and responds to it based on content
+    def replyToMention(self, mention):
+        content=mention.body
+        words=content.split()
+        reply= self.makeMessage(words)
+        mention.reply(reply)
+
+    #takes message content and parses out target word 
     def makeMessage(self,words):
-        print("makeMessage")
-        print("word is "+words[0])
         message= self.getDefinitions(words[0])
         return message
-
+    
+    #passes target word to dictionary api and parses and formats definitions
     def getDefinitions(self, word):
-        print("getDefinitions")
         with open('oxford.json') as f:
             app_info = json.load(f)
         language = 'en'
@@ -52,21 +52,5 @@ class vocabBot:
                                         for definition in subsense['definitions']:
                                             subIndex+=1
                                             definitions+="  "+str(index)+"."+str(subIndex)+": "+definition+"\n\n"
-                print("definitions are \n"+definitions)
                 return definitions
         return "Word not found"
-
-#https://developer.oxforddictionaries.com/documentation#!/Dictionary32entries/get_entries_source_lang_word_id
-
-#####################
-#unused code
-#####################
-
-    #def getUserComments(self, username, commentLimit):
-    #    user= self.redditInstance.redditor(username)
-    #   if (commentLimit<1):
-    #        commentLimit=None
-    #    comments=[]
-    #    for comment in user.comments.new(limit=commentLimit):
-    #        comments.append(comment.body)
-    #    return comments
