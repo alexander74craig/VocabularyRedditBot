@@ -3,11 +3,11 @@ A reddit bot that can return definititions for users. Bot can be summoned via me
 
 Example use:
 
-[–]User1:
+[–]User1
 
-  Chicken u/vocabularyredditbot
+    Chicken u/vocabularyredditbot
   
-  [–]VocabularyRedditBot
+   [–]VocabularyRedditBot
  
     1 point 15 minutes ago 
 
