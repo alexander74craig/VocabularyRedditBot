@@ -1,6 +1,7 @@
 import vocabBot
+import time
 
-foo=vocabBot.vocabBot()
-mentions=foo.getMentions()
-mentionNames=foo.getMentionNames(mentions)
-foo.mentionsNamesToJson(mentionNames)
+while True:
+    time.sleep(60)
+    robot=vocabBot.vocabBot()
+    robot.proccessMentions()

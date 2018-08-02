@@ -1,4 +1,5 @@
 *.ini
 .cache
 .vscode
+*.json
 __pycache__
