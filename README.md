@@ -1,5 +1,5 @@
 # VocabularyRedditBot
-A reddit bot that can return definititions for users. Bot can be summoned via mention anywhere in a comment body. The definitions of the first word in the comment body will be returned to the user via a reply comment.
+A reddit bot that can return definititions for users. Bot can be summoned via mention anywhere in a comment body. The definitions of the first word in the comment body will be returned to the user via a reply comment. [note, bot is currently innactive]
 
 Example use:
 
